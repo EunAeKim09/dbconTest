@@ -1,0 +1,27 @@
+-- 우리회사ERP
+DROP SCHEMA IF EXISTS coffee_project;
+
+-- 우리회사ERP
+CREATE SCHEMA coffee_project;
+
+USE coffee_project;
+
+CREATE TABLE product (
+	code char(4) not null,
+	name varchar(20)
+	primary key (code)
+);
+
+CREATE TABLE sale (
+	no int(11) not null,
+	code char(4) not null,
+	price int(11) not  null,
+	saleCnt int(11) not null,
+	marginRate int(11) not null,
+	primary key (no),
+	foreign key(code) references product(code)
+);
+
+-- create and grant user
+grant select, insert, update, delete on coffee_project.*
+	to 'user_coffee_project' identified by '1234';
